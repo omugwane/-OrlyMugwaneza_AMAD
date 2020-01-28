@@ -1,17 +1,22 @@
 package com.example.labone;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.labone.model.Country;
+
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> {
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
-    private List<Character> mCharacterList;
+    private List<Country> mCountryList;
     private Context mContext;
     private ItemClickListener mItemClickListener;
 
@@ -19,8 +24,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
         void onItemClick(int position);
     }
 
-    public MyListAdapter(List<Character> mCharacterList, Context mContext, ItemClickListener mItemClickListener) {
-        this.mCharacterList = mCharacterList;
+    public ListAdapter(List<Country> mCountryList, Context mContext, ItemClickListener mItemClickListener) {
+        this.mCountryList = mCountryList;
         this.mContext = mContext;
         this.mItemClickListener = mItemClickListener;
     }
@@ -44,7 +49,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
 
     @NonNull
     @Override
-    public MyListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View itemView = inflater.inflate(R.layout.list_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(itemView);
@@ -52,13 +57,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyListAdapter.ViewHolder holder, int position) {
-        Character character = mCharacterList.get(position);
-        holder.mTextView.setText(character.getName());
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Country country = mCountryList.get(position);
+        holder.mTextView.setText(country.getName());
     }
 
     @Override
     public int getItemCount() {
-        return mCharacterList.size();
+        return mCountryList.size();
     }
 }

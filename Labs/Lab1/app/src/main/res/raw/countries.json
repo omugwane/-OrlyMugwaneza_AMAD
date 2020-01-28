@@ -1,0 +1,34 @@
+{
+  "EastAfricanCountries":[
+    {
+      "name":"Rwanda",
+      "picture":"HarryPotter.jpg",
+      "anthem":"https://www.navyband.navy.mil/anthems/anthems/rwanda.mp3",
+      "info":"https://en.wikipedia.org/wiki/Rwanda"
+    },
+    {
+      "name":"Burundi",
+      "picture":"Ron_Weasley.jpg",
+      "anthem":"http://anthemworld.com/Burundi.html",
+      "info":"https://en.wikipedia.org/wiki/Burundi"
+    },
+    {
+      "name":"Kenya",
+      "picture":"Hermione_Granger.jpg",
+      "anthem":"http://anthemworld.com/Kenya.html",
+      "info":"https://www.navyband.navy.mil/anthems/anthems/kenya_jul2014.mp3"
+    },
+    {
+      "name":"Uganda",
+      "picture":"Hagrid.jpg",
+      "anthem":"https://www.navyband.navy.mil/anthems/anthems/tanzania.mp3",
+      "info":"https://en.wikipedia.org/wiki/Uganda"
+    },
+    {
+      "name":"Tanzania",
+      "picture":"Albus_Dumbledore2.jpg",
+      "anthem":"http://anthemworld.com/Tanzania.html",
+      "info":"https://en.wikipedia.org/wiki/Tanzania"
+    }
+  ]
+}

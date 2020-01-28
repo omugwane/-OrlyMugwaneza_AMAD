@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LabOne</string>
+    <string name="info">Info</string>
+    <string name="anthem">National Anthems</string>
 </resources>
