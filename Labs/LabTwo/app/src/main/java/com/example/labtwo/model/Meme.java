@@ -6,13 +6,15 @@ public class Meme {
     private String bottomText;
     private String image;
     private String topText;
+    private String rank;
 
-    public Meme(int ID, String bottomText,  String name, String image, String topText) {
+    public Meme(int ID, String bottomText,  String name, String image, String topText, String rank) {
         this.ID = ID;
         this.bottomText = bottomText;
         this.image = image;
         this.topText = topText;
         this.name=name;
+        this.rank=rank;
     }
 
     public int getID() {
@@ -53,5 +55,13 @@ public class Meme {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
     }
 }

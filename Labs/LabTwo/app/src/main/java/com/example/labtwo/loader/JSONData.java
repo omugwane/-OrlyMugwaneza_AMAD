@@ -10,7 +10,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.labtwo.model.Meme;
-import com.example.movies.model.Movie;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,15 +20,14 @@ import java.util.List;
 
 public class JSONData {
     public static List<Meme> memeList;
-    private static String API_URL="http://alpha-meme-maker.herokuapp.com";
-    private static String API_KEY="";
+    private static String API_URL="https://alpha-meme-maker.herokuapp.com";
 
     static {
         memeList = new ArrayList<>();
     }
 
     public static void getJSON(Context context){
-        String url = API_URL + API_KEY;
+        String url = API_URL;
 
         // create Volley request queue
         RequestQueue queue = Volley.newRequestQueue(context);
@@ -38,6 +36,7 @@ public class JSONData {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
                         parseJSON(response);
                     }
                 }, new Response.ErrorListener() {
@@ -58,9 +57,10 @@ public class JSONData {
                 //create JSONObject
                 JSONObject jsonObject = new JSONObject(response);
 
+
                 //create JSONArray with the value from the characters key
                 JSONArray resultsArray = jsonObject.getJSONArray("data");
-
+                Log.d("dataLength",""+resultsArray.length());
                 //loop through each object in the array
                 for (int i =0; i < resultsArray.length(); i++) {
                     JSONObject charObject = resultsArray.getJSONObject(i);
@@ -70,13 +70,16 @@ public class JSONData {
 
                     String bottomText = charObject.getString("bottomText");
                     String topText = charObject.getString("topText");
+                    String rank =String.valueOf( charObject.getInt("rank"));
 
                     //save the fully qualified URL for the poster image
                     String imageURL = charObject.getString("image");
-                    String name = String.valueOf(charObject.getDouble("name"));
+                    String name = String.valueOf(charObject.getString("name"));
+                    System.out.println(name);
+
 
                     //create new Movie object
-                    Meme meme = new Meme( id, bottomText,  name, imageURL, topText);
+                    Meme meme = new Meme( id, bottomText,  name, imageURL, topText,rank);
 
                     //add movie object to our ArrayList
                     memeList.add(meme);
@@ -85,6 +88,7 @@ public class JSONData {
                 e.printStackTrace();
             }
         }
+        Log.d("memeListSize",""+memeList.size());
         return memeList;
     }
 }
